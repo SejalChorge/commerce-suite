@@ -1,0 +1,74 @@
+@baseUrl = http://localhost:5000
+
+### ==========================================
+### HEALTH & INFO ENDPOINTS
+### ==========================================
+
+### Health Check
+GET {{baseUrl}}/api/samples/health
+
+### API Information
+GET {{baseUrl}}/api/samples/info
+
+### ==========================================
+### PRODUCTS ENDPOINTS (Controllers)
+### ==========================================
+
+### Get All Products
+GET {{baseUrl}}/api/products
+
+### Get Product by ID
+GET {{baseUrl}}/api/products/1
+
+### Get Product that doesn't exist (404 demo)
+GET {{baseUrl}}/api/products/999
+
+### Create New Product
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "name": "USB-C Cable",
+  "price": 19.99,
+  "description": "High-speed USB-C charging cable"
+}
+
+### Create Product with invalid data (400 demo)
+POST {{baseUrl}}/api/products
+Content-Type: application/json
+
+{
+  "name": "",
+  "price": -10,
+  "description": "Invalid product"
+}
+
+### ==========================================
+### ORDERS ENDPOINTS (Controllers)
+### ==========================================
+
+### Get All Orders
+GET {{baseUrl}}/api/orders
+
+### Get Order by ID
+GET {{baseUrl}}/api/orders/1
+
+### Get Order that doesn't exist (404 demo)
+GET {{baseUrl}}/api/orders/999
+
+### ==========================================
+### PRODUCTS ENDPOINTS (Minimal APIs)
+### ==========================================
+
+### Get Products via Minimal API
+GET {{baseUrl}}/api/samples/products-minimal
+
+### ==========================================
+### DOCUMENTATION
+### ==========================================
+
+### Swagger UI (Open in browser - Development only)
+GET {{baseUrl}}/
+
+### OpenAPI JSON Schema
+GET {{baseUrl}}/openapi/v1.json
