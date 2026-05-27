@@ -11,7 +11,7 @@ using CommerceSuite.Api.Models;
 public static class HealthAndUtilityEndpoints
 {
     /// <summary>
-    /// Maps sample minimal API endpoints to the application.
+    /// Maps Health and utility API endpoints to the application.
     /// </summary>
     /// <param name="app">The web application to map endpoints to.</param>
     /// <remarks>
@@ -24,27 +24,27 @@ public static class HealthAndUtilityEndpoints
     /// </remarks>
     public static void MapHealthAndUtilityEndpoints(this WebApplication app)
     {
-        var group = app.MapGroup("/api/samples")
+        var group = app.MapGroup("/api/system")
             .WithOpenApi()
-            .WithName("Samples")
-            .WithDescription("Sample minimal API endpoints demonstrating lightweight endpoint handlers");
+            .WithName("SystemEndpoints")
+            .WithDescription("Health and utility API endpoints demonstrating lightweight endpoint handlers");
 
         group.MapGet("/health", GetHealth)
-            .WithName("Health Check")
+            .WithName("GetHealth")
             .WithDescription("Returns the current health status of the API")
             .Produces<ApiResponse<HealthResponse>>(StatusCodes.Status200OK)
             .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError)
             .WithOpenApi();
 
         group.MapGet("/info", GetInfo)
-            .WithName("API Information")
+            .WithName("GetInfo")
             .WithDescription("Returns metadata and version information about the CommerceSuite API")
             .Produces<ApiResponse<ApiInfoResponse>>(StatusCodes.Status200OK)
             .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError)
             .WithOpenApi();
 
         group.MapGet("/products-minimal", GetProducts)
-            .WithName("Get Products (Minimal API)")
+            .WithName("GetProducts")
             .WithDescription("Returns all products using the minimal API pattern")
             .Produces<ApiResponse<IEnumerable<ProductDto>>>(StatusCodes.Status200OK)
             .Produces<ErrorResponse>(StatusCodes.Status500InternalServerError)

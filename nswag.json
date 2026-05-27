@@ -1,0 +1,22 @@
+{
+  "runtime": "Net100",
+  "documentGenerator": {
+    "fromDocument": {
+      "url": "https://localhost:7026/openapi/v1.json"
+    }
+  },
+  "codeGenerators": {
+    "openApiToCSharpClient": {
+      "className": "CommerceSuiteClient",
+      "namespace": "CommerceSuite.ApiClient.Generated",
+      "output": "CommerceSuite.ApiClient/Generated/CommerceSuiteClient.g.cs",
+      "generateClientInterfaces": true,
+      "injectHttpClient": true,
+      "disposeHttpClient": false,
+      "useBaseUrl": false,
+      "generateExceptionClasses": true,
+      "exceptionClass": "ApiException",
+      "jsonLibrary": "SystemTextJson"
+    }
+  }
+}

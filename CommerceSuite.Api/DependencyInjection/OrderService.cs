@@ -6,9 +6,17 @@ public class OrderService : IOrderService
 {
     private static readonly List<OrderDto> Orders = new()
     {
-        new OrderDto(1, "ORD-001", 1500.00m, DateTime.UtcNow.AddDays(-5)),
-        new OrderDto(2, "ORD-002", 2300.50m, DateTime.UtcNow.AddDays(-3)),
-        new OrderDto(3, "ORD-003", 999.99m, DateTime.UtcNow.AddDays(-1))
+        new OrderDto
+        {
+            Id = 1,Status = "Pending",Currency = "USD"
+        },
+        new OrderDto
+        {
+            Id = 2,Status = "Pending",Currency = "USD"
+        },
+        new OrderDto{
+            Id = 3,Status = "Pending",Currency = "INR"
+        }
     };
 
     public Task<IEnumerable<OrderDto>> GetAllOrdersAsync()

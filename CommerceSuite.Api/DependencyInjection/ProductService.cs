@@ -6,11 +6,26 @@ public class ProductService : IProductService
 {
     private static readonly List<ProductDto> Products = new()
     {
-        new ProductDto(1, "Laptop", 999.99m, "High-performance laptop"),
-        new ProductDto(2, "Mouse", 29.99m, "Wireless mouse"),
-        new ProductDto(3, "Keyboard", 79.99m, "Mechanical keyboard"),
-        new ProductDto(4, "Monitor", 299.99m, "4K monitor"),
-        new ProductDto(5, "Headphones", 149.99m, "Noise-cancelling headphones")
+        new ProductDto
+        {
+            Id = 1,Name = "Laptop", Description = "High-performance laptop", Price = 1000
+        },
+        new ProductDto
+        {
+            Id = 1,Name = "Mouse", Description = "Wireless mouse", Price = 200
+        },
+        new ProductDto
+        {
+            Id = 1,Name = "Keyboard", Description = "Mechanical keyboard", Price = 500
+        },
+        new ProductDto
+        {
+            Id = 1,Name = "Monitor", Description = "4K monitor", Price = 1000
+        },
+        new ProductDto
+        {
+            Id = 1,Name = "Headphones", Description = "Noise cancelling headphones", Price = 500
+        }
     };
 
     public Task<IEnumerable<ProductDto>> GetAllProductsAsync()
@@ -27,7 +42,7 @@ public class ProductService : IProductService
     public Task<ProductDto> CreateProductAsync(ProductDto product)
     {
         var newId = Products.Max(p => p.Id) + 1;
-        var newProduct = new ProductDto(newId, product.Name, product.Price, product.Description);
+        var newProduct = new ProductDto() { Category = product.Category, Description = product.Description, Id = newId, Name = product.Name, Price = product.Price };
         Products.Add(newProduct);
         return Task.FromResult(newProduct);
     }
